@@ -6,3 +6,13 @@ const App = () => {
 
   const [progress, setProgress] = useState(0);
 
+  return (
+    <>
+      <div>
+        <Router>
+          <Navbar />
+          <LoadingBar
+            color="red"
+            progress={progress}
+            // onLoaderFinished={() => setProgress(0)}
+          />
