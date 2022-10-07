@@ -50,6 +50,7 @@ const News = (props) => {
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
   };
+
   return (
     <>
       <h1

@@ -1,4 +1,9 @@
 import "./App.css";
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import News from "./components/News";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
 
 const App = () => {
   const pageSize = 9;
