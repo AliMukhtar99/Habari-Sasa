@@ -34,3 +34,19 @@ const News = (props) => {
   useEffect(() => {
     updateNews();
   }, []);
+
+  const fetchMoreData = async () => {
+    const url = `https://newsapi.org/v2/top-headlines?country=${
+      props.country
+    }&category=${props.category}&apiKey=${props.apiKey}&page=${
+      page + 1
+    }&pageSize=${props.pageSize}`;
+    setPage(page + 1);
+    // setState({ loading: true });
+    let data = await fetch(url);
+
+    let parsedData = await data.json();
+    console.log(parsedData);
+    setArticles(articles.concat(parsedData.articles));
+    setTotalResults(parsedData.totalResults);
+  };
