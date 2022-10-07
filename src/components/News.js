@@ -50,3 +50,70 @@ const News = (props) => {
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
   };
+  return (
+    <>
+      <h1
+        className="text-center"
+        style={{ padding: "10px", marginTop: "60px" }}
+      >
+        Headlines
+      </h1>
+      {loading && <Spinner />}
+
+      <InfiniteScroll
+        style={{ overflow: "" }}
+        dataLength={articles.length}
+        next={fetchMoreData}
+        hasMore={articles.length !== totalResults}
+        loader={<Spinner />}
+      >
+        <div className="container">
+          <div className="row">
+            {
+              //!loading &&
+              articles.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <NewsItem
+                      title={
+                        element.title
+                          ? element.title.substring(
+                              0,
+                              element.title.indexOf("-")
+                            )
+                          : ""
+                      }
+                      description={
+                        element.description
+                          ? element.description.slice(0, 100)
+                          : ""
+                      }
+                      newsUrl={element.url}
+                      imageUrl={element.urlToImage}
+                      author={element.author}
+                      publishedAt={element.publishedAt}
+                      source={element.source.name}
+                    />
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+      </InfiniteScroll>
+      <div className="container d-flex justify-content-between"></div>
+    </>
+  );
+};
+News.propTypes = {
+  country: PropTypes.string,
+  pageSize: PropTypes.number,
+  category: PropTypes.string,
+};
+
+News.defaultProps = {
+  country: "in",
+  pageSize: 5,
+  category: "general",
+};
+export default News;
