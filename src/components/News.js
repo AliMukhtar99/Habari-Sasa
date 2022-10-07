@@ -11,9 +11,9 @@ const News = (props) => {
   const [totalResults, setTotalResults] = useState(0);
 
   if (props.category !== "general") {
-    document.title = `Motion News - ${props.category}`;
+    document.title = `Habari Sasa - ${props.category}`;
   } else {
-    document.title = `Motion News - Home`;
+    document.title = `Habari Sasa - Home`;
   }
 
   const updateNews = async () => {
@@ -102,7 +102,27 @@ const News = (props) => {
           </div>
         </div>
       </InfiniteScroll>
-      <div className="container d-flex justify-content-between"></div>
+      <div className="container d-flex justify-content-between">
+        {/* <button
+            disabled={page <= 1}
+            type="button"
+            className="btn btn-primary "
+            onClick={handlePreviousClick}
+          >
+            &lArr; Previous
+          </button> */}
+        {/* <button
+            disabled={
+              page + 1 >
+              Math.ceil(totalResults / props.pageSize)
+            }
+            type="button"
+            className="btn btn-primary"
+            onClick={handleNextClick}
+          >
+            Next &rArr;
+          </button> */}
+      </div>
     </>
   );
 };
