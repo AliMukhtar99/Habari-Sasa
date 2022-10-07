@@ -14,4 +14,19 @@ const Navbar = () => {
       }
     });
   }, []);
-};
+
+   // This function will scroll the window to the top
+   const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // for smoothly scrolling
+    });
+  };
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            Habari Sasa
+          </Link>
+
